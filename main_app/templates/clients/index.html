@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Client List</h1>
+
+{% for client in clients %}
+  <div class="card">
+    <div class="card-content">
+      <a href="{% url 'client_detail' client.id %}">
+      <span class="card-title">{{ client.name }}</span>
+      <p>ID Number: {{ client.id }}</p>
+      </a>
+      <p>Claims: {{ client.claims }}</p>
+      <p>Awards: {{ client.awards }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

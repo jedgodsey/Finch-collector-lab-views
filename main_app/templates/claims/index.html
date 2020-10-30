@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>All Claims</h1>
+
+{% for claim in claims %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ claim.id }}</span>
+      <p>Type: {{ claim.claim_type }}</p>
+      <p>Value: {{ claim.value }}</p>
+      <p>Client: {{ claim.client }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

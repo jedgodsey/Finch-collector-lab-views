@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Client Details</h1>
+
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ client.name }}</span>
+        <p>Claimant: {{ client.id }}</p>
+        <p>Address: {{ client.address }}</p>
+        <p>Social Security#: {{ client.social }}</p>
+        <p>Final Determination: {{ client.final_determination }}</p>
+        <p>Total Award: {{ client.total_award }}</p>
+        <p>Payment Issued? {{ client.payment_issued }}</p>
+        <p>Payment Received? {{ client.payment_received }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col s6">
+    <table class="striped">
+      <thead>
+        <tr><th>Claim</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        {% for claim in client.claim_set.all %}
+          <tr>
+            <td>{{claim.claim_type}}</td>
+            <td>{{claim.get_value_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
